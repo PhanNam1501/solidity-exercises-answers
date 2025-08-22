@@ -11,7 +11,12 @@ contract Exponent {
         public
         view
         returns (uint256)
-    {
-        // your code here
+    {   
+        uint256 result = 1;
+        for (uint256 i = 0; i < _e; i++) {
+            result *= _base;
+        }
+        
+        return result;
     }
 }

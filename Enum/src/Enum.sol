@@ -18,6 +18,11 @@ contract ExampleEnum {
     }
 
     function isWeekend(uint256 index) public pure returns (bool) {
-        // your code here
+        DayOfWeek day = DayOfWeek(index);
+        if (day == DayOfWeek.Saturday || day == DayOfWeek.Sunday) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

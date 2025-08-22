@@ -26,6 +26,4 @@ contract CodeSize {
     function f17() external pure returns (uint256) { return 1; }
     function f18() external pure returns (uint256) { return 1; }
     function f19() external pure returns (uint256) { return 1; }
-
-
 }
