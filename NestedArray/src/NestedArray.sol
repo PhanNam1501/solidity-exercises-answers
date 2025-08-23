@@ -8,11 +8,21 @@ contract NestedArray {
         arr = newArr;
     }
 
+    function getSumArray(uint256[] memory _arr) public view returns (uint256 ret) {
+        for (uint256 i = 0; i < _arr.length; i ++) {
+            ret += _arr[i];
+        }
+    }
+
     /**
      * This function is expected to get the sum of all members of each nested array and finally return the sum of all the nested sums
      * Example: [[1,2], [3,4]] this should return 1 + 2 + 3 + 4 = 10
      */
-    function getNestedSum() public view returns (uint256) {
+    function getNestedSum() public view returns (uint256 ret) {
         // your code here
+        
+        for (uint256 i = 0; i < arr.length; i++) {
+            ret += getSumArray(arr[i]);
+        }
     }
 }

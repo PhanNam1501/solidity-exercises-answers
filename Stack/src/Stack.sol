@@ -22,4 +22,27 @@ contract Stack {
     }
 
     // your code here
+    function push(uint256 element) external {
+        stack.push(element);
+    }
+
+    function peek() public  returns (uint256) {
+        require(stack.length > 0);
+        return stack[stack.length - 1];
+    }
+
+    function pop() external returns (uint256) {
+        require(stack.length > 0);
+        uint256 last = peek();
+        stack.pop();
+        return last;
+    }
+
+    function size() external returns (uint256) {
+        return stack.length;
+    }
+
+    function getStack() external returns (uint256[] memory) {
+        return stack;
+    }
 }

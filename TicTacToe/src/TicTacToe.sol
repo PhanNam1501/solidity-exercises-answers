@@ -12,5 +12,33 @@ contract TicTacToe {
 
     function isWinning(uint8[3][3] memory board) public pure returns (bool) {
         // your code here
+
+        //check column
+        uint256 check;
+        for(uint256 i = 0; i < 3; i++) {
+            if(board[0][i] == board[1][i] && board[1][i] == board[2][i] ) {
+                if (board[2][i] == 0) check += 1;
+                if (board[2][i] == 1) return true;
+            }
+        }
+
+        if (check == 3) return true;
+
+        //check raw
+        for(uint256 i = 0; i < 3; i++) {
+            if(board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][2] == 1) {
+                return true;
+            }
+        }
+        
+        //check hang cheo
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[2][2] == 1) {
+            return true;
+        }
+        if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[2][0] == 1) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -19,5 +19,11 @@ contract ReducingPayout {
 
     function withdraw() public {
         // your code here
+        uint256 amountExpected = block.timestamp >= 86400
+            ? 0
+            : 1 ether - ((block.timestamp * 0.0011574 ether) / 100);
+
+        (bool sent, ) = payable(msg.sender).call{value: amountExpected}("");
+        require(sent, "Transfer failed");
     }
 }
