@@ -9,5 +9,10 @@ contract InsertInArray {
      */
     function replaceAtIndex(uint256 index, uint256 newValue) public {
         // your code here
+        for (uint256 i = 0; i < arr.length; i++) {
+            if (i == index) {
+                arr[i] = newValue;
+            }
+        }
     }
 }

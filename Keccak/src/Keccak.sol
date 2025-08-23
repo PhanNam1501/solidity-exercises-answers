@@ -8,5 +8,11 @@ contract Keccak {
 
     function keccak(uint256 x) external pure returns (bytes32) {
         // your code here
+        assembly {
+            mstore(0x00, x)
+            let ret := keccak256(0x00, 0x20)
+            mstore(0x20, ret)
+            return(0x20, 0x20)
+        }
     }
 }

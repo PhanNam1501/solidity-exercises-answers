@@ -12,12 +12,21 @@ contract IdiotBettingGame {
         2. `claimPrize` function can only be called by the winner after the betting 
            period has ended. It transfers the entire balance of the contract to the winner.
     */
+    uint256 public lastBet;
+    address public winner;
+    uint256 public endTime;
 
     function bet() public payable {
-        // your code here
+        if (uint256(msg.value) > lastBet) {
+            lastBet = uint256(msg.value);
+            winner = msg.sender;
+            endTime = block.timestamp +  1 hours;
+        }
     }
 
     function claimPrize() public {
-        // your code here
+        require(winner == msg.sender);
+        require(block.timestamp > endTime);
+        (bool ok, ) = payable(winner).call{value: address(this).balance}("");
     }
 }
